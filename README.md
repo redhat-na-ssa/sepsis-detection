@@ -52,13 +52,13 @@ Patient with suspicious infection
 
 ## Project Overview
 
-Develop and deploy a machine learning model to flag patients at risk of being septic or having Sepsis
-on Kubeframe, which consists of:
+Goal: An operational supervised binary classification machine learning model to predict patients with Systemic inflammatory response syndrome (SIRS) 
+for early identification of Sepsis powered by the Red Hat Portfolio, which consists of:
 
 |Function|Solution|
 |-|-|
 |AI/ML Operations|<Red Hat Products>|
-|MLOps|aicoe-ci, thoth-station, 
+|MLOps|aicoe-ci, thoth-station|
 |AI/ML Development|Open Data Hub project|
 |Registry|Quay|
 |Pipeline|Tekton|

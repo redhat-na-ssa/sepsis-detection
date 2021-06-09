@@ -4,6 +4,7 @@ pandas
 matplotlib
 seaborn
 scikit-learn
+xgboost
 kaggle
 opendatasets
 requests
