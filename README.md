@@ -105,14 +105,14 @@ Based on the data:
 Vitals signs
 |Column|Definition|Keep|Drop|Note|
 |-|-|-|-|-|
-|HR|Heart Rate normal adult 60 - 100 beats per minute (bpm)|x|||
-|O2Sat|Oxygen saturation normal adult 97% - 100% (%)|x||lack indication|
-|Temp|Temperature normal 97.8°F/36.5°C - 99°F/37.2°C (°C)|x|||
-|SBP|Systolic Blood Pressure normal < 120 mmHg (mm Hg)||x|use MAP|
-|DBP|beclomethasone dipropionate normal < 80 mmHg (mm Hg)||x|use MAP|
-|MAP|Mean Arterial Pressure (mm Hg)|x|||
-|Resp|Respiration rate  12<normal<20 breaths / minute (bpm)||x||
-|EtCO2|End-tidal CO2 maximum concentration of CO2 at exhalation normal 35 - 45 mmHg ||x|missing 96% of entries|
+|HR|Heart Rate normal adult 60 - 100 beats per minute (bpm)||||
+|O2Sat|Oxygen saturation normal adult 97% - 100% (%)||||
+|Temp|Temperature normal 97.8°F/36.5°C - 99°F/37.2°C (°C)||||
+|SBP|Systolic Blood Pressure normal < 120 mmHg (mm Hg)||||
+|DBP|beclomethasone dipropionate normal < 80 mmHg (mm Hg)||||
+|MAP|Mean Arterial Pressure (mm Hg)||||
+|Resp|Respiration rate  12<normal<20 breaths / minute (bpm)||||
+|EtCO2|End-tidal CO2 maximum concentration of CO2 at exhalation normal 35 - 45 mmHg ||||
 
 
 Laboratory values
@@ -129,7 +129,7 @@ Laboratory values
 |HCO3|Bicarbonate, carbon dioxide in blood (indicates metabolism / resp) (mmoI/L)||||
 |FiO2|# % of concentration of oxygen inhaled (indicates resp) (%)||x|missing entries|
 |PaCO2|partial pressure of carbon dioxide measured in blood (indicates resp) (mm Hg)|||missing entries|
-|'SaO2', # normal 95-100% oxygen saturation bound to hemoglobin (indicates resp) (%)|||lack indication|
+|SaO2|normal 95-100% oxygen saturation bound to hemoglobin (indicates resp) (%)|||lack indication|
 |# liver|||||
 |AST|aspartate aminotransferase (indicates liver) (IU/L)||||
 |Bilirubin_direct|conjugated water soluble (indicates liver) (mg/dL)||x|missing entries|
