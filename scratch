@@ -1,0 +1,48 @@
+Projects
+[ ] KubeFrame
+[ ] Kaggle
+[ ] Open Data Hub
+    [ ] ODH Dashboard
+    [ ] JupyterHub
+    [ ] Jupyter Notebooks
+    [ ] ...
+[ ] Thoth-station
+[ ] AICoE-CI
+[ ] Operate First
+[ ] Mass Open Cloud (MOC)
+
+Products
+[ ] HPE EL8000
+[ ] RH OpenShift
+[ ] RH OpenShift Container Storage
+[ ] RH Quay
+[ ] NVIDIA GPU Operator
+
+Features
+- MLOps with public or private procedures to publish, update and push projects in notebooks
+- MLOps using aicoe-ci for private and public projects
+- Automatically deploy/update notebook images to ODH JupyterHub spawner
+- Automatically install packages and python declared in GitHub to Notebook Images
+- jupyterhub-build-pipeline with Tekton
+
+
+
+
+quay.io
+create organization
+create bot account
+assign write permissions
+k8s secret, download, pass to aicoe-ci team, update secret
+edit the aicoe-ci.yaml
+- change line 12 organization
+- change line 13 project name
+- change line 14 to bot name
+create tag
+  issues > new release > patch release
+Create imagestream (manual / automated with deploy)
+
+
+https://github.com/aicoe-aiops/project-template
+https://www.operate-first.cloud/users/data-science-workflows/docs/create_and_deploy_jh_image.md
+https://www.youtube.com/watch?v=gEwdJ9LAQ2Q
+https://massopen.cloud/
