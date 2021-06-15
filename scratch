@@ -1,3 +1,54 @@
+HR  Heart Rate normal adult 60 - 100 beats per minute (bpm)
+O2Sat', # Oxygen saturation normal adult 97% - 100% (%)
+Temp', # Temperature normal 97.8°F/36.5°C - 99°F/37.2°C (°C)
+          'SBP', # Systolic Blood Pressure normal < 120 mmHg (mm Hg) (indicates how much pressure your blood is exerting against your artery walls when the heart beats.)
+          'DBP', # beclomethasone dipropionate normal < 80 mmHg (mm Hg) (indicates how much pressure your blood is exerting against your artery walls while the heart is resting between beats.)
+          'MAP', # Mean Arterial Pressure (mm Hg)
+          'Resp', # Respiration rate  12<normal<20 breaths / minute (bpm)
+          "EtCO2" # End-tidal CO2 maximum concentration of CO2 at exhalation normal 35 - 45 mmHg (mm Hg)
+          ]
+
+labs = ['BaseExcess', # strong acid to restore pH (mmoI/L)
+        'Magnesium', # symptoms such as weakness, irritability, cardiac arrhythmia, nausea, and/or diarrhea (mmoI/L)
+        'Glucose', # blood sugar test (indicates diagnose diabetes, pre-diabetes and gestational diabetes) (mg/dL)
+        'Alkalinephos', # Alkaline phosphatase (indicates enzyme activity) (IU/L)
+        'pH', # 0:14 = acidic = lower pH; alkaline = higher
+        'Chloride', # an electrolyte to balance fluid in cells normal 96-103 ml (indicates blood pressure/pH) (mmoI/L)
+        'Lactate', # high levels indicate lack of oxygen (hypoxia) or other conditions (indicates sepsis) (mg/dL)
+        # Respiratory
+        'HCO3', # Bicarbonate, carbon dioxide in blood (indicates metabolism / resp) (mmoI/L)
+        'FiO2', # % of concentration of oxygen inhaled (indicates resp) (%)
+        'PaCO2', # partial pressure of carbon dioxide measured in blood (indicates resp) (mm Hg)
+        'SaO2', # normal 95-100% oxygen saturation bound to hemoglobin (indicates resp) (%)
+        # liver
+        'AST', # aspartate aminotransferase (indicates liver) (IU/L)
+        'Bilirubin_direct', # conjugated water soluble (indicates liver) (mg/dL)
+        'Bilirubin_total', # normal 0.1:1.2 mg/dL (indicates liver) (mg/dL)
+        # kidneys
+        'BUN', # blood urea nitrogen, nitrogen in the blood (indicates kidneys) (mg/dL)
+        'Creatinine', # metabolic panel (indicates kidneys) (mg/dL)
+        'Calcium', # indicates range of conditions bones, heart, nerves, kidneys, and teeth (mg/dL)
+        'Phosphate', # related to calcium (indicates kidney or diabetes)  (mg/dL)
+        'Potassium', # electrolyte or metabolism (affected by blood pressure, kidneys, etc.)  (mmoI/L)
+        # Heart
+        'TroponinI', # cardiac specific Trenonin I and T (indicates injury to heart muscle)
+        # Blood
+        'Hct', # Hematocrit (indicates portion of blood from Red Blood Cell count) (%)
+        'Hgb', # Hemoglobin apart of Complete Blood Count (CBC) (indicates blood cell count) (g/dL)
+        'WBC', # White Blood Cell Count (indicates infection, inflammation or disease) (count10^3/µL)
+        'PTT', # Partial Thromboplastin Time (indicates bleeding or blood clot) (seconds)
+        'Fibrinogen', # coagulation factor I (indicates bleeding or blood clot or cardiovascular disease) (mg/dL)
+        'Platelets' # indicates bleeding disorder, a bone marrow disease, or other underlying condition ((count10^3/µL))
+        ]
+
+demo = ['Age', # Years (100 for patients 90 or above)
+        'Gender', # Female = 0, Male = 1
+        'HospAdmTime', # Hours between hospital admit and ICU admit
+        'ICULOS' # ICU length of stay in hours (hours since ICU admit)
+        ]
+
+
+
 Projects
 [ ] KubeFrame
 [ ] Kaggle

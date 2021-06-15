@@ -103,6 +103,7 @@ Dataset comes from Kaggle (https://www.kaggle.com/maxskoryk/datasepsis)
 Based on the data:
 
 Vitals signs
+
 |Column|Definition|Keep|Drop|Note|
 |-|-|-|-|-|
 |HR|Heart Rate normal adult 60 - 100 beats per minute (bpm)||||
@@ -116,6 +117,7 @@ Vitals signs
 
 
 Laboratory values
+
 |Column|Definition|Keep|Drop|Note|
 |-|-|-|-|-|
 |BaseExcess|strong acid to restore pH (mmoI/L)||||
@@ -127,12 +129,12 @@ Laboratory values
 |Lactate|high levels indicate lack of oxygen (hypoxia) or other conditions (indicates sepsis) (mg/dL)||||
 |# Respiratory|||||
 |HCO3|Bicarbonate, carbon dioxide in blood (indicates metabolism / resp) (mmoI/L)||||
-|FiO2|# % of concentration of oxygen inhaled (indicates resp) (%)||x|missing entries|
-|PaCO2|partial pressure of carbon dioxide measured in blood (indicates resp) (mm Hg)|||missing entries|
-|SaO2|normal 95-100% oxygen saturation bound to hemoglobin (indicates resp) (%)|||lack indication|
+|FiO2|# % of concentration of oxygen inhaled (indicates resp) (%)||||
+|PaCO2|partial pressure of carbon dioxide measured in blood (indicates resp) (mm Hg)||||
+|SaO2|normal 95-100% oxygen saturation bound to hemoglobin (indicates resp) (%)||||
 |# liver|||||
 |AST|aspartate aminotransferase (indicates liver) (IU/L)||||
-|Bilirubin_direct|conjugated water soluble (indicates liver) (mg/dL)||x|missing entries|
+|Bilirubin_direct|conjugated water soluble (indicates liver) (mg/dL)||||
 |Bilirubin_total|normal 0.1:1.2 mg/dL (indicates liver) (mg/dL)||||
 |# kidneys|||||
 |BUN|blood urea nitrogen, nitrogen in the blood (indicates kidneys) (mg/dL)||||
@@ -145,12 +147,13 @@ Laboratory values
 |# Blood|||||
 |Hct|Hematocrit (indicates portion of blood from Red Blood Cell count) (%)||||
 |Hgb|Hemoglobin apart of Complete Blood Count (CBC) (indicates blood cell count) (g/dL)||||
-|WBC|White Blood Cell Count (indicates infection, inflammation or disease) (count10^3/µL)||||
+|WBC|White Blood Cell Count (indicates infection, inflammation or disease) (1 count10^3/µL)||||
 |PTT|Partial Thromboplastin Time (indicates bleeding or blood clot) (seconds)||||
 |Fibrinogen|coagulation factor I (indicates bleeding or blood clot or cardiovascular disease) (mg/dL)||||
 |Platelets|indicates bleeding disorder, a bone marrow disease, or other underlying condition ((count10^3/µL))||||
 
 Demographics
+
 |Column|Definition|Keep|Drop|Note|
 |-|-|-|-|-|
 |Age|Years (100 for patients 90 or above)||||
@@ -165,4 +168,4 @@ Demographics
 1. https://www.aafp.org/afp/2013/0701/p44.html   
 1. https://www.kaggle.com/maxskoryk/datasepsis
 1. https://www.nursingcenter.com/ncblog/march-2017/elevated-lactate-%E2%80%93-not-just-a-marker-for-sepsis-an
-
+1. https://unitslab.com/node/74
