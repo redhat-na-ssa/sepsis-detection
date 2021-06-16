@@ -10,9 +10,9 @@ import urllib.request
 # URL that hosts the data
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/<repo>"
 # full path to the archive file
-DATASET_URL = DOWNLOAD_ROOT + "datasets/sepsis/archive.zip"
+DATASET_URL = DOWNLOAD_ROOT + "data/raw/archive.zip"
 # local file path
-DATASET_PATH = os.path.join("datasets", "sepsis")
+DATASET_PATH = os.path.join("data", "raw")
 
 # function to fetch data
 def fetch_data(url=DATASET_URL, path=DATASET_PATH):
