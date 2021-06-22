@@ -8,4 +8,5 @@ xgboost
 kaggle
 opendatasets
 requests
-
+ipyplot
+scikit-image
