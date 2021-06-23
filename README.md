@@ -153,5 +153,3 @@ the Red Hat Portfolio.
     1. slow degradation as data evolves
     1. monitor input quality as well as output
 1. Retrain models on fresh data regularly (automate it!)
-
-
