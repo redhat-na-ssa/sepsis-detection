@@ -153,3 +153,104 @@ the Red Hat Portfolio.
     1. slow degradation as data evolves
     1. monitor input quality as well as output
 1. Retrain models on fresh data regularly (automate it!)
+
+```angular2html
+.
+├── README.md
+├── data
+│   ├── in                                                  # simulate new patient(s) vitals, labs, etc. data
+│   │   └── new_data.csv                              # sample new data  
+│   ├── out                                                 # simulate predictions from input data    
+│   │   └── new_data_results.csv                      # sample new data predictions  
+│   ├── raw                                                 # raw data for exploration to training
+│   │   ├── archive.gz                    
+│   │   ├── archive.zip
+│   │   └── dataSepsis.csv
+│   └── transform                                           # data transformation pipelines serialized to disk 
+│       ├── pipeline.pkl
+│       └── pipeline_minmax.pkl
+├── images                                                        # images used in the notebooks for illustration  
+│   ├── SIRSvsqSOFA.jpg
+│   ├── SepsisDetection.png
+│   ├── confusion_matrix.png
+│   └── scikitlearn-choose-right-estimator.png
+├── main.py                                                       # main prediction python script
+├── models                                                        # serializes model files from experiment to final downselection
+│   ├── experiment                                          # serialized from data-science notebook                   
+│   │   ├── gnb_model.pkl
+│   │   ├── knn_model.pkl
+│   │   ├── log_model.pkl
+│   │   ├── mlp_model.pkl
+│   │   ├── rfc_model.pkl
+│   │   ├── sgd_model.pkl
+│   │   ├── svc_model.pkl
+│   │   └── xgbc_model.pkl
+│   ├── final                                               # production-ready models
+│   │   ├── mlp_model.pkl
+│   │   └── xgbc_model.pkl
+│   └── tune                                                # hyperparameter tuned models
+│       ├── mlp_model.pkl
+│       └── xgbc_model.pkl
+├── notebooks
+│   ├── README.md
+│   ├── data-engineering.ipynb                              # exploring data
+│   ├── data-science.ipynb                                  # feature engineering and model exploring
+│   ├── mlp-model.ipynb                                     # downselected model for production
+│   ├── rfc-model.ipynb                                     # downselected model for production
+│   └── xgbc-model.ipynb                                    # downselected model for production
+├── reports                                                       # saved figures for reference
+│   └── figures
+│       ├── experiment
+│       │   ├── gnb_cm.png
+│       │   ├── gnb_prc.png
+│       │   ├── knn_cm.png
+│       │   ├── knn_prc.png
+│       │   ├── log_cm.png
+│       │   ├── log_prc.png
+│       │   ├── mlp_cm.png
+│       │   ├── mlp_prc.png
+│       │   ├── rfc_cm.png
+│       │   ├── rfc_prc.png
+│       │   ├── sgd_cm.png
+│       │   ├── sgd_prc.png
+│       │   ├── svc_cm.png
+│       │   ├── svc_prc.png
+│       │   ├── xgbc_cm.png
+│       │   └── xgbc_prc.png
+│       ├── final
+│       │   ├── mlp_cm.png
+│       │   ├── mlp_prc.png
+│       │   ├── rfc_cm.png
+│       │   ├── rfc_prc.png
+│       │   ├── xgbc_cm.png
+│       │   └── xgbc_prc.png
+│       └── tune
+│           ├── mlp_cm.png
+│           ├── rfc_cm.png
+│           └── xgbc_cm.png
+├── requirements.txt                                                  # required packages
+├── scratch                                                           # scratch/to-delete folder
+│   ├── model-performance-assessment.ipynb
+│   ├── scratch-pad
+│   ├── train_svc.py
+│   ├── train_svc_grid.py
+│   └── train_svc_rand.py
+├── serving                                                             # model serving work
+│   ├── README.md
+│   └── fn
+│       ├── func.py
+│       ├── func.yaml
+│       ├── requirements.txt
+│       └── test_func.py
+└── submodules                                                          # reusuable python functions/methods
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-39.pyc
+    │   ├── config.cpython-39.pyc
+    │   ├── fetch.cpython-39.pyc
+    │   ├── fetch_data.cpython-39.pyc
+    │   └── load_data.cpython-39.pyc
+    ├── config.py 
+    ├── fetch_data.py
+    └── load_data.py
+```

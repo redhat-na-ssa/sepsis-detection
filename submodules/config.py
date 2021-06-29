@@ -1,5 +1,5 @@
 # path to the dataset
-CSV_PATH = 'datasets/sepsis/dataSepsis.csv'
+CSV_PATH = 'data/in/new_data.csv'
 
 # column names of the data frame
 COLS = ["HR", "O2Sat", "Temp", "SBP", "MAP", "DBP", "Resp", "EtCO2", "BaseExcess", "HCO3", "FiO2", "pH", "PaCO2", "SaO2"

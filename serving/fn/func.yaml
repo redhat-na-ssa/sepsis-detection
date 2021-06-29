@@ -1,1 +1,11 @@
 # determines the image name and registry
+name: sepsis-function
+namespace: sepsisdetection
+runtime: node
+image: <image_from_registry>
+imageDigest: ""
+trigger: http
+builder: default
+builderMap:
+  default: quay.io/boson/faas-nodejs-builder
+envVars: {}
