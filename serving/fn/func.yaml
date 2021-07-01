@@ -2,7 +2,7 @@
 name: sepsis-function
 namespace: sepsisdetection
 runtime: node
-image: <image_from_registry>
+image: registry.redhat.io/ubi8/python-38
 imageDigest: ""
 trigger: http
 builder: default
