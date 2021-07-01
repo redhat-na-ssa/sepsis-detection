@@ -20,10 +20,10 @@ OUTPUT = args["output"]
 PIPELINE = joblib.load(args["pipeline"])
 MODEL = joblib.load(args["model"])
 
-def read_data(data=INPUT):
+def read_data():
     # read in data
     print("[INFO] loading new patient data...")
-    return pd.read_csv(data, sep=",")
+    return pd.read_csv(INPUT, sep=",")
 
 def transform_predict():
     # data pipeline
