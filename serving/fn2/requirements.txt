@@ -4,3 +4,4 @@ pandas
 joblib
 requests
 pytest
+xgboost

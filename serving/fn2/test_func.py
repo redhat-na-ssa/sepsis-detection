@@ -53,7 +53,7 @@ class TestFunc(unittest.TestCase):
    "Gender":0,
    "Unit1":"NaN",
    "Unit2":"NaN",
-   "HospAdmTime":-0.03,
+   "HospAdmTime":"-0.03",
    "ICULOS":17,
    "isSepsis":0
 }
@@ -124,15 +124,17 @@ class TestFunc(unittest.TestCase):
     # new_headers, _ = m.ToRequest(body, converters.TypeStructured, lambda x: x)
     # print(new_headers)
     
-    resp, code, headers = func.main(data)
-    self.assertEqual(resp["isspesis"], 0)
+    #resp, code, headers = func.main(data)
+    resp, code = func.main(data)
+    self.assertEqual(resp["issepsis"], 0)
     self.assertEqual(code, 200)
-    self.assertEqual(headers["content-type"], "application/json")
+    #self.assertEqual(headers["content-type"], "application/json")
 
-    resp, code, headers = func.main(data2)
-    self.assertEqual(resp["isspesis"], 1)
+    # resp, code, headers = func.main(data2)
+    resp, code = func.main(data2)
+    self.assertEqual(resp["issepsis"], 1)
     self.assertEqual(code, 200)
-    self.assertEqual(headers["content-type"], "application/json")
+    #self.assertEqual(headers["content-type"], "application/json")
 
 if __name__ == "__main__":
   unittest.main()

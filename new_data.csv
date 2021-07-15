@@ -1,2 +1,0 @@
-HR,O2Sat,Temp,SBP,MAP,DBP,Resp,EtCO2,BaseExcess,HCO3,FiO2,pH,PaCO2,SaO2,AST,BUN,Alkalinephos,Calcium,Chloride,Creatinine,Bilirubin_direct,Glucose,Lactate,Magnesium,Phosphate,Potassium,Bilirubin_total,TroponinI,Hct,Hgb,PTT,WBC,Fibrinogen,Platelets,Age,Gender,Unit1,Unit2,HospAdmTime,ICULOS,isSepsis
-103,90,NaN,NaN,NaN,NaN,30,NaN,21,45,NaN,7.37,90,91,16,14,98,9.3,85,0.7,NaN,193,NaN,2,3.3,3.8,0.3,NaN,37.2,12.5,NaN,5.7,NaN,317,83.14,0,NaN,NaN,-0.03,17,0

@@ -26,16 +26,8 @@ MODEL = joblib.load(args["model"])
 
 def main():
     print("[INFO] loading new patient data...")
-    # raw = pd.read_csv(INPUT, sep=",")
+    raw = pd.read_csv(INPUT, sep=",")
     print("[INFO] dropping non-bio markers...")
-    # print("printing raw")
-    # print (raw)
-     
-    # raw.to_json("data/in/new.json", orient = "records", date_format = "epoch", double_precision = 10, force_ascii = True, date_unit = "ms", default_handler = None)
-    # raw = pd.read_json("data/in/new.json")
-    raw = pd.read_json("data/in/new_single.json")
-    print("data frame")
-    print(raw)
     
     dropped = raw.drop(
         ["Age", "Unit1", "Unit2", "HospAdmTime", "ICULOS", "Gender", "Bilirubin_direct", "TroponinI", "isSepsis"],

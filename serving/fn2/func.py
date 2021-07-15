@@ -29,12 +29,16 @@ def main(context: Context):
     # logging.warning(f'**************  type: {type(r.get_data())}')
     # logging.warning(f'**************  headers: {r.headers}')
 
+   #load model from storage
+    global pipeline
+    global model
+
     # get json data from request or cloud event
     data = context 
     # if context :
   #     print(context)
     if hasattr(context, "request"):
-         data= context.request.get_data()
+         data = json.loads(context.request.get_data())
     if hasattr(context, "cloud_event"):
          if hasattr(context.cloud_event, "data"):
             data = context.cloud_event.data
@@ -48,14 +52,15 @@ def main(context: Context):
     logging.warning(f'**************  "[INFO] raw dataframe... {raw}') 
    # print(raw)
 
-   #load model from storage
-    global pipeline
-    global model
 
+
+    # load pipeline and model 
     if pipeline == None:
+        logging.warning(f'**************  loading pipeline')
         pipeline = joblib.load("pipeline.pkl")
 
     if model == None:
+        logging.warning(f'**************  loading model')
         model = joblib.load("xgbc_model.pkl")
 
     # drop fields not required in model
@@ -70,11 +75,13 @@ def main(context: Context):
     prediction = model.predict(transformed)
     logging.warning(f'[INFO] saving prediction...')
     results = pd.DataFrame(prediction)
-    results.columns = ["isspesis"]
+    results.columns = ["issepsis"]
     for index, row in results.iterrows():
-        isspesis = row["isspesis"]
+        issepsis = row["issepsis"]
 
     # return results
-    body = { "isspesis": isspesis }
-    headers = { "content-type": "application/json" }
-    return body, 200, headers
+    body = { "issepsis": int(issepsis) }
+    #headers = { "content-type": "application/json" }
+    logging.warning(f'**************  "[INFO] prediction... {body}')    
+    return { "issepsis": int(issepsis) }, 200 
+    #return body, 200 , headers
