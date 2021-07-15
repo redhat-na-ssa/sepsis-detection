@@ -1,8 +1,8 @@
-name: sepsis-function
+name: sepsisfunction
 namespace: sepsis-detection
 runtime: python
 image: quay.io/redhat_naps_da/sepsis-detection:latest
-imageDigest: ""
+imageDigest: sha256:6b64f9efac8379b780a730613331590803341053bb9d46896d288e1322667eac
 trigger: http
 builder: default
 builderMap:

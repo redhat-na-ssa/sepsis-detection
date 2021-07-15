@@ -1,0 +1,282 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Sepsis Detection",
+        "version": "1.0.0",
+        "description": "Interface for sending patient data to analyze for sepsis risk assessment. The data points below are optional. Send \"NaN\" if data is null.\n\n[\"Age\", \"Unit1\", \"Unit2\", \"HospAdmTime\", \"ICULOS\", \"Gender\", \"Bilirubin_direct\", \"TroponinI\", \"isSepsis\"]"
+    },
+    "paths": {
+        "/": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PatientVitals"
+                            },
+                            "examples": {
+                                "Sample point-in-time patient vitals": {
+                                    "value": {
+                                        "HR": "103",
+                                        "O2Sat": "90",
+                                        "Temp": "NaN",
+                                        "SBP": "NaN",
+                                        "MAP": "NaN",
+                                        "DBP": "NaN",
+                                        "Resp": "30",
+                                        "EtCO2": "NaN",
+                                        "BaseExcess": "21",
+                                        "HCO3": "45",
+                                        "FiO2": "NaN",
+                                        "pH": "7.37",
+                                        "PaCO2": "90",
+                                        "SaO2": "91",
+                                        "AST": "16",
+                                        "BUN": "14",
+                                        "Alkalinephos": "98",
+                                        "Calcium": "9.3",
+                                        "Chloride": "85",
+                                        "Creatinine": "0.7",
+                                        "Bilirubin_direct": "NaN",
+                                        "Glucose": "193",
+                                        "Lactate": "NaN",
+                                        "Magnesium": "2",
+                                        "Phosphate": "3.3",
+                                        "Potassium": "3.8",
+                                        "Bilirubin_total": "0.3",
+                                        "TroponinI": "NaN",
+                                        "Hct": "37.2",
+                                        "Hgb": "12.5",
+                                        "PTT": "NaN",
+                                        "WBC": "5.7",
+                                        "Fibrinogen": "NaN",
+                                        "Platelets": "317",
+                                        "Age": "83.14",
+                                        "Gender": "0",
+                                        "Unit1": "NaN",
+                                        "Unit2": "NaN",
+                                        "HospAdmTime": "-0.03",
+                                        "ICULOS": "17",
+                                        "isSepsis": "0"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SepsisResponse"
+                                },
+                                "examples": {
+                                    "Positive for Sepsis": {
+                                        "value": {
+                                            "issepsis": 1
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Data showing whether or not input data was deemed to be sepsis positive by the detection model."
+                    }
+                },
+                "summary": "Analyze a point-in-time dataset for a petient to detect sepsis risk"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SepsisResponse": {
+                "title": "Root Type for SepsisResponse",
+                "description": "Results from analyzing patient vitals information",
+                "type": "object",
+                "properties": {
+                    "issepsis": {
+                        "format": "int32",
+                        "type": "integer"
+                    }
+                },
+                "example": {
+                    "issepsis": 1
+                }
+            },
+            "PatientVitals": {
+                "title": "Root Type for PatientVitals",
+                "description": "Vitals information taken from a patient at a particular point in time.",
+                "type": "object",
+                "properties": {
+                    "HR": {
+                        "type": "string"
+                    },
+                    "O2Sat": {
+                        "type": "string"
+                    },
+                    "Temp": {
+                        "type": "string"
+                    },
+                    "SBP": {
+                        "type": "string"
+                    },
+                    "MAP": {
+                        "type": "string"
+                    },
+                    "DBP": {
+                        "type": "string"
+                    },
+                    "Resp": {
+                        "type": "string"
+                    },
+                    "EtCO2": {
+                        "type": "string"
+                    },
+                    "BaseExcess": {
+                        "type": "string"
+                    },
+                    "HCO3": {
+                        "type": "string"
+                    },
+                    "FiO2": {
+                        "type": "string"
+                    },
+                    "pH": {
+                        "type": "string"
+                    },
+                    "PaCO2": {
+                        "type": "string"
+                    },
+                    "SaO2": {
+                        "type": "string"
+                    },
+                    "AST": {
+                        "type": "string"
+                    },
+                    "BUN": {
+                        "type": "string"
+                    },
+                    "Alkalinephos": {
+                        "type": "string"
+                    },
+                    "Calcium": {
+                        "type": "string"
+                    },
+                    "Chloride": {
+                        "type": "string"
+                    },
+                    "Creatinine": {
+                        "type": "string"
+                    },
+                    "Bilirubin_direct": {
+                        "type": "string"
+                    },
+                    "Glucose": {
+                        "type": "string"
+                    },
+                    "Lactate": {
+                        "type": "string"
+                    },
+                    "Magnesium": {
+                        "type": "string"
+                    },
+                    "Phosphate": {
+                        "type": "string"
+                    },
+                    "Potassium": {
+                        "type": "string"
+                    },
+                    "Bilirubin_total": {
+                        "type": "string"
+                    },
+                    "TroponinI": {
+                        "type": "string"
+                    },
+                    "Hct": {
+                        "type": "string"
+                    },
+                    "Hgb": {
+                        "type": "string"
+                    },
+                    "PTT": {
+                        "type": "string"
+                    },
+                    "WBC": {
+                        "type": "string"
+                    },
+                    "Fibrinogen": {
+                        "type": "string"
+                    },
+                    "Platelets": {
+                        "type": "string"
+                    },
+                    "Age": {
+                        "type": "string"
+                    },
+                    "Gender": {
+                        "type": "string"
+                    },
+                    "Unit1": {
+                        "type": "string"
+                    },
+                    "Unit2": {
+                        "type": "string"
+                    },
+                    "HospAdmTime": {
+                        "type": "string"
+                    },
+                    "ICULOS": {
+                        "type": "string"
+                    },
+                    "isSepsis": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "HR": "103",
+                    "O2Sat": "90",
+                    "Temp": "NaN",
+                    "SBP": "NaN",
+                    "MAP": "NaN",
+                    "DBP": "NaN",
+                    "Resp": "30",
+                    "EtCO2": "NaN",
+                    "BaseExcess": "21",
+                    "HCO3": "45",
+                    "FiO2": "NaN",
+                    "pH": "7.37",
+                    "PaCO2": "90",
+                    "SaO2": "91",
+                    "AST": "16",
+                    "BUN": "14",
+                    "Alkalinephos": "98",
+                    "Calcium": "9.3",
+                    "Chloride": "85",
+                    "Creatinine": "0.7",
+                    "Bilirubin_direct": "NaN",
+                    "Glucose": "193",
+                    "Lactate": "NaN",
+                    "Magnesium": "2",
+                    "Phosphate": "3.3",
+                    "Potassium": "3.8",
+                    "Bilirubin_total": "0.3",
+                    "TroponinI": "NaN",
+                    "Hct": "37.2",
+                    "Hgb": "12.5",
+                    "PTT": "NaN",
+                    "WBC": "5.7",
+                    "Fibrinogen": "NaN",
+                    "Platelets": "317",
+                    "Age": "83.14",
+                    "Gender": "0",
+                    "Unit1": "NaN",
+                    "Unit2": "NaN",
+                    "HospAdmTime": "-0.03",
+                    "ICULOS": "17",
+                    "isSepsis": "0"
+                }
+            }
+        }
+    }
+}

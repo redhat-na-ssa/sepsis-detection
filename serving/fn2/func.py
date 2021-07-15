@@ -63,7 +63,7 @@ def main(context: Context):
         logging.warning(f'**************  loading model')
         model = joblib.load("xgbc_model.pkl")
 
-    # drop fields not required in model
+    # dropping non-bio markers
     dropped = raw.drop(
         ["Age", "Unit1", "Unit2", "HospAdmTime", "ICULOS", "Gender", "Bilirubin_direct", "TroponinI", "isSepsis"],
         axis=1)

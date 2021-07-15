@@ -1,4 +1,28 @@
-# Serving
+# I just want to deploy to Openshift
+
+To deploy and test on OpenShift
+
+```
+oc apply -f kubernetes/
+```
+
+or if you prefer to use the kn CLI
+
+```
+kn service create sepsis-detection --port 8080 --image quay.io/redhat_naps_da/sepsis-detection:latet 
+```
+
+to test with `curl`
+   ```
+    KROUTE=$(oc get route.serving.knative.dev/sepsis-detection --template='{{ .status.url }}' )
+
+    curl -X POST -H "Content-Type: application/json" --data '{"HR":103,"O2Sat":90,"Temp":"NaN","SBP":"NaN","MAP":"NaN","DBP":"NaN","Resp":30,"EtCO2":"NaN","BaseExcess":21,"HCO3":45,"FiO2":"NaN","pH":7.37,"PaCO2":90,"SaO2":91,"AST":16,"BUN":14,"Alkalinephos":98,"Calcium":9.3,"Chloride":85,"Creatinine":0.7,"Bilirubin_direct":"NaN","Glucose":193,"Lactate":"NaN","Magnesium":2,"Phosphate":3.3,"Potassium":3.8,"Bilirubin_total":0.3,"TroponinI":"NaN","Hct":37.2,"Hgb":12.5,"PTT":"NaN","WBC":5.7,"Fibrinogen":"NaN","Platelets":317,"Age":83.14,"Gender":0,"Unit1":"NaN","Unit2":"NaN","HospAdmTime":-0.03,"ICULOS":17,"isSepsis":0}' $KROUTE
+
+
+    curl -X POST -H "Content-Type: application/json" --data '{"HR":72.0,"O2Sat":96.0,"Temp":"NaN","SBP":103.0,"MAP":62.0,"DBP":45.0,"Resp":20.0,"EtCO2":"NaN","BaseExcess":-1.0,"HCO3":"NaN","FiO2":"NaN","pH":7.4,"PaCO2":36.0,"SaO2":98.0,"AST":"NaN","BUN":"NaN","Alkalinephos":"NaN","Calcium":"NaN","Chloride":"NaN","Creatinine":"NaN","Bilirubin_direct":"NaN","Glucose":"NaN","Lactate":"NaN","Magnesium":"NaN","Phosphate":"NaN","Potassium":"NaN","Bilirubin_total":"NaN","TroponinI":"NaN","Hct":"NaN","Hgb":"NaN","PTT":"NaN","WBC":"NaN","Fibrinogen":"NaN","Platelets":"NaN","Age":77.26,"Gender":0,"Unit1":0.0,"Unit2":1.0,"HospAdmTime":-135.81,"ICULOS":19,"isSepsis":1}' $KROUTE
+    ```
+
+# Serving - To test locally and deploy using OpenShift Serverless Functions
 
 OpenShift Serverless Python Function
 - OpenShift Serverless Functions enables developers to create and deploy stateless, event-driven functions as a Knative service on OpenShift Container Platform.
@@ -27,7 +51,7 @@ End to End [Serverless Python Function](https://access.redhat.com/documentation/
         `$ podman search --filter=is-official --limit 3 python`
 1. The python function template was created using the following command
 
-   `$ kn func create -r quay.io -l python -t http -i /redhat_naps_da/sepsis-detection:latest -n sepsis-detection`
+   `$ kn func create serving/fn2 -r quay.io -l python -t http -i /redhat_naps_da/sepsis-detection:latest -n sepsis-detection`
 
    The image name can be modified in func.yaml
 1. To run the unit tests locally
@@ -39,7 +63,7 @@ End to End [Serverless Python Function](https://access.redhat.com/documentation/
 
    `$ kn func build` 
 
-   you can also push to an external registry like quay.io using podman or docker
+   you can also push to an external registry like quay.io using podman or docker. All `podman` commands below work with `docker`
 
    `$ podman push <image-name-specified-in-func.yaml>`
 
@@ -56,7 +80,7 @@ End to End [Serverless Python Function](https://access.redhat.com/documentation/
     podman run --rm --name=sepsis-detection -p8080:8080 -d <image-name-specified-in-func.yaml>
     ```
     Test locally by sending data with a `curl`.
-    
+
     ```
     curl -X POST -H "Content-Type: application/json" --data '{"HR":103,"O2Sat":90,"Temp":"NaN","SBP":"NaN","MAP":"NaN","DBP":"NaN","Resp":30,"EtCO2":"NaN","BaseExcess":21,"HCO3":45,"FiO2":"NaN","pH":7.37,"PaCO2":90,"SaO2":91,"AST":16,"BUN":14,"Alkalinephos":98,"Calcium":9.3,"Chloride":85,"Creatinine":0.7,"Bilirubin_direct":"NaN","Glucose":193,"Lactate":"NaN","Magnesium":2,"Phosphate":3.3,"Potassium":3.8,"Bilirubin_total":0.3,"TroponinI":"NaN","Hct":37.2,"Hgb":12.5,"PTT":"NaN","WBC":5.7,"Fibrinogen":"NaN","Platelets":317,"Age":83.14,"Gender":0,"Unit1":"NaN","Unit2":"NaN","HospAdmTime":-0.03,"ICULOS":17,"isSepsis":0}' http://127.0.0.1:8080
     ```
@@ -75,7 +99,16 @@ End to End [Serverless Python Function](https://access.redhat.com/documentation/
 1. Deploy the function to OpenShift
 
    `$ kn func deploy`   
-   
+
+   to test with `curl`
+   ```
+   KROUTE=$(oc get route.serving.knative.dev/sepsisfunction --template='{{ .status.url }}' )
+
+    curl -X POST -H "Content-Type: application/json" --data '{"HR":103,"O2Sat":90,"Temp":"NaN","SBP":"NaN","MAP":"NaN","DBP":"NaN","Resp":30,"EtCO2":"NaN","BaseExcess":21,"HCO3":45,"FiO2":"NaN","pH":7.37,"PaCO2":90,"SaO2":91,"AST":16,"BUN":14,"Alkalinephos":98,"Calcium":9.3,"Chloride":85,"Creatinine":0.7,"Bilirubin_direct":"NaN","Glucose":193,"Lactate":"NaN","Magnesium":2,"Phosphate":3.3,"Potassium":3.8,"Bilirubin_total":0.3,"TroponinI":"NaN","Hct":37.2,"Hgb":12.5,"PTT":"NaN","WBC":5.7,"Fibrinogen":"NaN","Platelets":317,"Age":83.14,"Gender":0,"Unit1":"NaN","Unit2":"NaN","HospAdmTime":-0.03,"ICULOS":17,"isSepsis":0}' $KROUTE
+
+
+    curl -X POST -H "Content-Type: application/json" --data '{"HR":72.0,"O2Sat":96.0,"Temp":"NaN","SBP":103.0,"MAP":62.0,"DBP":45.0,"Resp":20.0,"EtCO2":"NaN","BaseExcess":-1.0,"HCO3":"NaN","FiO2":"NaN","pH":7.4,"PaCO2":36.0,"SaO2":98.0,"AST":"NaN","BUN":"NaN","Alkalinephos":"NaN","Calcium":"NaN","Chloride":"NaN","Creatinine":"NaN","Bilirubin_direct":"NaN","Glucose":"NaN","Lactate":"NaN","Magnesium":"NaN","Phosphate":"NaN","Potassium":"NaN","Bilirubin_total":"NaN","TroponinI":"NaN","Hct":"NaN","Hgb":"NaN","PTT":"NaN","WBC":"NaN","Fibrinogen":"NaN","Platelets":"NaN","Age":77.26,"Gender":0,"Unit1":0.0,"Unit2":1.0,"HospAdmTime":-135.81,"ICULOS":19,"isSepsis":1}' $KROUTE
+    ```
 
 
 Reference
