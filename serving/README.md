@@ -1,15 +1,32 @@
-# I just want to deploy to Openshift
+# Sepsis Detection As a Serverless API
+
+Instructions to deploy the sepsis-detection as a serverless function on OpenShit
+
+## To just deploy to Openshift
 
 To deploy and test on OpenShift
 
-```
-oc apply -f kubernetes/
+1. Install OCP Serverless Operator from OperatorHub
+1. Install Knative Serving from Installed Operators under project: knative-serving
+
+```sh
+oc apply -f fn2/kubernetes/
 ```
 
-or if you prefer to use the kn CLI
+This will create a knative service using. The minimum number of pods is set to 1 (not zero) due to 
+
+```yaml
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+```
+
+Alternatively, you can use the kn CLI
 
 ```
-kn service create sepsis-detection --port 8080 --image quay.io/redhat_naps_da/sepsis-detection:latet 
+kn service create sepsis-detection --port 8080 --image quay.io/redhat_naps_da/sepsis-detection:latest --scale-min 1 
 ```
 
 to test with `curl`
@@ -22,7 +39,7 @@ to test with `curl`
     curl -X POST -H "Content-Type: application/json" --data '{"HR":72.0,"O2Sat":96.0,"Temp":"NaN","SBP":103.0,"MAP":62.0,"DBP":45.0,"Resp":20.0,"EtCO2":"NaN","BaseExcess":-1.0,"HCO3":"NaN","FiO2":"NaN","pH":7.4,"PaCO2":36.0,"SaO2":98.0,"AST":"NaN","BUN":"NaN","Alkalinephos":"NaN","Calcium":"NaN","Chloride":"NaN","Creatinine":"NaN","Bilirubin_direct":"NaN","Glucose":"NaN","Lactate":"NaN","Magnesium":"NaN","Phosphate":"NaN","Potassium":"NaN","Bilirubin_total":"NaN","TroponinI":"NaN","Hct":"NaN","Hgb":"NaN","PTT":"NaN","WBC":"NaN","Fibrinogen":"NaN","Platelets":"NaN","Age":77.26,"Gender":0,"Unit1":0.0,"Unit2":1.0,"HospAdmTime":-135.81,"ICULOS":19,"isSepsis":1}' $KROUTE
 ```
 
-# Serving - To test locally and deploy using OpenShift Serverless Functions
+## To test locally and deploy using OpenShift Serverless Functions
 
 OpenShift Serverless Python Function
 - OpenShift Serverless Functions enables developers to create and deploy stateless, event-driven functions as a Knative service on OpenShift Container Platform.
