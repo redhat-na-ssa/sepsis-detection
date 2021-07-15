@@ -1,0 +1,10 @@
+name: sepsis-function
+namespace: sepsis-detection
+runtime: python
+image: quay.io/redhat_naps_da/sepsis-detection:latest
+imageDigest: ""
+trigger: http
+builder: default
+builderMap:
+  default: quay.io/boson/faas-python-builder
+envVars: {}
