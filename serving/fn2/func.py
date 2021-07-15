@@ -22,14 +22,8 @@ def main(context: Context):
     logging.warning(f'')
     logging.warning(f'**************************************************************')
     logging.warning(f'************** main() called.')
-    # logging.warning(f'**************  context.request: {r}')
-    # logging.warning(f'**************  content_length: {r.content_length}')
-   # logging.warning(f'**************  get_data: {r.get_data()}')
-    # logging.warning(f'**************  get_data: {context.cloud_event.data}')
-    # logging.warning(f'**************  type: {type(r.get_data())}')
-    # logging.warning(f'**************  headers: {r.headers}')
 
-   #load model from storage
+    #load model from storage
     global pipeline
     global model
 

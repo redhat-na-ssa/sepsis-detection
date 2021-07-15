@@ -1,16 +1,9 @@
 import unittest
-# from cloudevents.http import CloudEvent, to_structured
-# import requests
-# from cloudevents.sdk import converters, marshaller
-# from cloudevents.sdk.event import v1, v03
-# import pytest
 
 func = __import__("func")
 
 class TestFunc(unittest.TestCase):
 
-  # @pytest.mark.parametrize("event_class", [v03.Event, v1.Event])
-  # def test_func(event_class):
   def test_func(self) :
 
     #test no sepsis
@@ -138,16 +131,6 @@ class TestFunc(unittest.TestCase):
 
 if __name__ == "__main__":
   unittest.main()
-
-#   TODO
-# Cloud events
-
-# Pass single Json 
-# - then store in list in api service
-
-
-
-# Api spec 
 
 
 #data as index
