@@ -29,8 +29,7 @@ spec:
         app.openshift.io/runtime-version: latest
     spec:
       containers:
-        - image: >-
-            quay.io/sepsis-detection/sepsis-detection:latest
+        - image: 'quay.io/redhat_naps_da/sepsis-detection:latest'
           imagePullPolicy: Always
           name: sepsis-detection
           ports:
