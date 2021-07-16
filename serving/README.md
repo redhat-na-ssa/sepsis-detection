@@ -16,7 +16,7 @@ oc project sepsis-detection
 oc apply -f fn/kubernetes/
 ```
 
-This will create a knative service using. The minimum number of pods is set to 1 (not zero) due to 
+This will create a knative service using. The minimum number of pods is set to 1 (not zero) due to performance loading the model and pipeline each time from zero versus having at least 1 pod with the model and pipeline loaded
 
 ```yaml
 spec:
