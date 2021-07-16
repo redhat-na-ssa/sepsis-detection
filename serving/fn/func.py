@@ -1,46 +1,97 @@
-# contains a main() function
-# USAGE
-# python serving/fn/func.py -i data/in/new_data.csv -o data/out/predictions.csv
-
-# OPTIONAL ARGUMENTS
-# python serving/fn/func.py -i data/in/new_data.csv -o data/out/predictions.csv -p data/transform/pipeline_minmax.pkl -m models/final/mlp_model.pkl
-
+from parliament import Context
 import pandas as pd
 import joblib
-import argparse
-
+import logging
 import json
-import csv
 
-ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--input",  type=str, required=True, default="data/in/new_data.csv", help="where to grab data to predict against")
-ap.add_argument("-o", "--output", type=str, required=True, default="data/out/predictions.csv", help="where to save the predictions")
-ap.add_argument("-p", "--pipeline", type=str, default="data/transform/pipeline.pkl", help="which pipeline to pass the data through")
-ap.add_argument("-m", "--model", type=str, default="models/final/xgbc_model.pkl", help="which final model to inference/predict with")
-args = vars(ap.parse_args())
+pipeline = None
+model = None
+biomarkers = None
 
-INPUT = args["input"]
-OUTPUT = args["output"]
-PIPELINE = joblib.load(args["pipeline"])
-MODEL = joblib.load(args["model"])
+def main(context: Context):
 
-def main():
-    print("[INFO] loading new patient data...")
-    raw = pd.read_csv(INPUT, sep=",")
-    print("[INFO] dropping non-bio markers...")
-    
+    """ 
+    Function template
+    The context parameter contains the Flask request object and any
+    CloudEvent received with the request.
+    """
+
+    #
+    # Debug output.
+    #
+    logging.warning(f'')
+    logging.warning(f'')
+    logging.warning(f'**************************************************************')
+    logging.warning(f'************** main() called.')
+
+    #load model from storage
+    global pipeline
+    global model
+
+    # get json data from request or cloud event
+    data = context 
+
+    # attempt to get data from HTTP Request or cloud event
+    if hasattr(context, "cloud_event") and hasattr(context.cloud_event, "data"):
+         data = context.cloud_event.data
+    if hasattr(context, "request"):
+         data = json.loads(context.request.get_data())
+
+
+    logging.warning(f'**************  data from request: {data}')
+
+    # add missing biomarkers to the data 
+    global biomarkers
+    if biomarkers == None:
+        biomarkers = ["HR","O2Sat","Temp","SBP","MAP","DBP","Resp","EtCO2","BaseExcess","HCO3","FiO2","pH","PaCO2","SaO2","AST","BUN","Alkalinephos","Calcium","Chloride","Creatinine","Bilirubin_direct","Glucose","Lactate","Magnesium","Phosphate","Potassium","Bilirubin_total","TroponinI","Hct","Hgb","PTT","WBC","Fibrinogen","Platelets","Age","Gender","Unit1","Unit2","HospAdmTime","ICULOS","isSepsis"]
+    # print(biomarkers)
+
+    # logging.warning(f'**************  checking for missing biomarkers')
+    # OR should we add this to the data frame?
+    # for marker in biomarkers:
+    #     if marker not in data:
+    #         data[marker] = "NaN"
+
+    #convert to index before creating data frame
+    jsondata = json.loads("[" + json.dumps(data) + "]") #convert to string first
+    #logging.warning(f'**************  "[INFO] updated data with all biomarkers... {jsondata}') 
+   
+    logging.warning(f'**************  checking for missing biomarkers')
+    raw = pd.DataFrame(jsondata)  
+    for marker in biomarkers:
+        if marker not in raw.columns:
+            raw[marker] = "NaN"
+
+    logging.warning(f'**************  "[INFO] raw dataframe... {raw}') 
+ 
+    # load pipeline and model 
+    if pipeline == None:
+        logging.warning(f'**************  loading pipeline')
+        pipeline = joblib.load("pipeline.pkl")
+
+    if model == None:
+        logging.warning(f'**************  loading model')
+        model = joblib.load("xgbc_model.pkl")
+
+    # dropping non-bio markers
     dropped = raw.drop(
         ["Age", "Unit1", "Unit2", "HospAdmTime", "ICULOS", "Gender", "Bilirubin_direct", "TroponinI", "isSepsis"],
         axis=1)
-    print("[INFO] passing data through pipeline...")
-    print(dropped)
-    transformed = PIPELINE.transform(dropped)
-    print("[INFO] performing inference...")
-    prediction = MODEL.predict(transformed)
-    print("[INFO] saving predictions...")
-    results = pd.DataFrame(prediction)
-    results.columns = ["isspesis"]
-    results.to_csv(OUTPUT)
+    logging.warning(f'**************  "[INFO] passing transformed data through pipeline... {dropped}')
 
-# program
-main()
+    # perform inference and predict
+    transformed = pipeline.transform(dropped)
+    logging.warning(f'[INFO] performing inference...')
+    prediction = model.predict(transformed)
+    logging.warning(f'[INFO] saving prediction...')
+    results = pd.DataFrame(prediction)
+    results.columns = ["issepsis"]
+    for index, row in results.iterrows():
+        issepsis = row["issepsis"]
+
+    # return results
+    body = { "issepsis": int(issepsis) }
+    #headers = { "content-type": "application/json" }
+    logging.warning(f'**************  "[INFO] prediction... {body}')    
+    return { "issepsis": int(issepsis) }, 200 
+    #return body, 200 , headers

@@ -1,4 +1,8 @@
 # additional dependencies added as common in Python projects
+parliament-functions==0.1.0
+scikit-learn==0.24.2
 pandas
 joblib
-argparse
+requests
+pytest
+xgboost
