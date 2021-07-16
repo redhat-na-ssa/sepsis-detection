@@ -4,6 +4,13 @@ func = __import__("func")
 
 class TestFunc(unittest.TestCase):
 
+  def test_data(self, biomarkers, expectedResult) :
+    #resp, code, headers = func.main(biomarkers)
+    resp, code = func.main(biomarkers)
+    self.assertEqual(resp["issepsis"], expectedResult)
+    self.assertEqual(code, 200)
+    #self.assertEqual(headers["content-type"], "application/json")
+
   def test_func(self) :
 
     #test no sepsis
@@ -117,20 +124,10 @@ class TestFunc(unittest.TestCase):
     # new_headers, _ = m.ToRequest(body, converters.TypeStructured, lambda x: x)
     # print(new_headers)
     
-    #resp, code, headers = func.main(data)
-    resp, code = func.main(data)
-    self.assertEqual(resp["issepsis"], 0)
-    self.assertEqual(code, 200)
-    #self.assertEqual(headers["content-type"], "application/json")
-
-    # resp, code, headers = func.main(data2)
-    resp, code = func.main(data2)
-    self.assertEqual(resp["issepsis"], 1)
-    self.assertEqual(code, 200)
-    #self.assertEqual(headers["content-type"], "application/json")
+    self.test_data(data, 0)
+    self.test_data(data2, 1)
 
     # test with missing fields
-
     # no sepsis
     data = {
    "HR":103,
@@ -182,16 +179,13 @@ class TestFunc(unittest.TestCase):
    "ICULOS":19,
 }
 
-    # resp, code = func.main(data)
-    # self.assertEqual(resp["issepsis"], 1)
-    # self.assertEqual(code, 200)    
-    
-    # resp, code = func.main(data2)
-    # self.assertEqual(resp["issepsis"], 1)
-    # self.assertEqual(code, 200)
+    # self.test_data(data, 0)
+    # self.test_data(data2, 1)
+
   
 if __name__ == "__main__":
   unittest.main()
+
 
 
 #data as index
