@@ -39,15 +39,24 @@ def main(context: Context):
 
     logging.warning(f'**************  data from request: {data}')
 
+    # add missing biomarkers to the data
+    biomarkers = ["HR","O2Sat","Temp","SBP","MAP","DBP","Resp","EtCO2","BaseExcess","HCO3","FiO2","pH","PaCO2","SaO2","AST","BUN","Alkalinephos","Calcium","Chloride","Creatinine","Bilirubin_direct","Glucose","Lactate","Magnesium","Phosphate","Potassium","Bilirubin_total","TroponinI","Hct","Hgb","PTT","WBC","Fibrinogen","Platelets","Age","Gender","Unit1","Unit2","HospAdmTime","ICULOS","isSepsis"]
+    # print(biomarkers)
+
+    # logging.warning(f'**************  checking for missing biomarkers')
+    # for marker in biomarkers:
+    #     if marker not in data:
+    #         data[marker] = "NaN"
+
     #convert to index before creating data frame
     jsondata = json.loads("[" + json.dumps(data) + "]") #convert to string first
-   # print(jsondata)
+    # print(jsondata)
     raw = pd.DataFrame(jsondata)  
     logging.warning(f'**************  "[INFO] raw dataframe... {raw}') 
    # print(raw)
 
-
-
+ 
+ 
     # load pipeline and model 
     if pipeline == None:
         logging.warning(f'**************  loading pipeline')
