@@ -133,7 +133,6 @@ class TestFunc(unittest.TestCase):
    "Bilirubin_total":0.3,
    "Hct":37.2,
    "Hgb":12.5,
-   "PTT":"NaN",
    "WBC":5.7,
    "Platelets":317,
    "Age":83.14,
