@@ -26,7 +26,7 @@ spec:
 Alternatively, you can use the kn CLI
 
 ```
-kn service create sepsis-detection --port 8080 --image quay.io/redhat_naps_da/sepsis-detection:latest --scale-min 1 --label app.openshift.io/runtime=python
+kn service create sepsis-detection --port 8080 --image quay.io/redhat_naps_da/sepsis-detection:latest --scale-min 1 --scale-max 10 --label app.openshift.io/runtime=python
 ```
 
 to test with `curl`

@@ -19,6 +19,7 @@ spec:
     metadata:
       annotations:
         autoscaling.knative.dev/minScale: '1'
+        autoscaling.knative.dev/maxScale: '10'
       labels:
         app.kubernetes.io/component: sepsis-detection
         app.kubernetes.io/instance: sepsis-detection
