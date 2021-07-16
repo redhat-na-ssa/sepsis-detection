@@ -10,8 +10,10 @@ To deploy and test on OpenShift
 1. Install Knative Serving from Installed Operators under project: knative-serving
 
 ```sh
+git clone https://github.com/redhat-naps-da/sepsis-detection.git
+cd serving
 oc project sepsis-detection
-oc apply -f fn2/kubernetes/
+oc apply -f fn/kubernetes/
 ```
 
 This will create a knative service using. The minimum number of pods is set to 1 (not zero) due to 
