@@ -1,7 +1,0 @@
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: sepsis-detection
-spec:
-  finalizers:
-    - kubernetes

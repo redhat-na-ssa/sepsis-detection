@@ -5,14 +5,12 @@ metadata:
     image.openshift.io/triggers: >-
       [{"from":{"kind":"ImageStreamTag","name":"sepsis-detection:latest","namespace":"sepsis-detection"},"fieldPath":"spec.template.spec.containers[?(@.name==\"sepsis-detection\")].image","pause":"false"}]
   name: sepsis-detection
-  namespace: sepsis-detection
   labels:
     app.kubernetes.io/component: sepsis-detection
     app.kubernetes.io/instance: sepsis-detection
     app.kubernetes.io/name: sepsis-detection
     app.kubernetes.io/part-of: sepsis-detection-app
     app.openshift.io/runtime: python
-    app.openshift.io/runtime-namespace: sepsis-detection
     app.openshift.io/runtime-version: latest
 spec:
   template:
@@ -26,7 +24,6 @@ spec:
         app.kubernetes.io/name: sepsis-detection
         app.kubernetes.io/part-of: sepsis-detection-app
         app.openshift.io/runtime: python
-        app.openshift.io/runtime-namespace: sepsis-detection
         app.openshift.io/runtime-version: latest
     spec:
       containers:

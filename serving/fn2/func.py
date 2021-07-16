@@ -55,11 +55,14 @@ def main(context: Context):
     #convert to index before creating data frame
     jsondata = json.loads("[" + json.dumps(data) + "]") #convert to string first
     #logging.warning(f'**************  "[INFO] updated data with all biomarkers... {jsondata}') 
+   
+    logging.warning(f'**************  checking for missing biomarkers')
     raw = pd.DataFrame(jsondata)  
-    logging.warning(f'**************  "[INFO] raw dataframe... {raw}') 
-   # print(raw)
+    for marker in biomarkers:
+        if marker not in raw.columns:
+            raw[marker] = "NaN"
 
- 
+    logging.warning(f'**************  "[INFO] raw dataframe... {raw}') 
  
     # load pipeline and model 
     if pipeline == None:

@@ -10,6 +10,7 @@ To deploy and test on OpenShift
 1. Install Knative Serving from Installed Operators under project: knative-serving
 
 ```sh
+oc project sepsis-detection
 oc apply -f fn2/kubernetes/
 ```
 
@@ -85,6 +86,12 @@ End to End [Serverless Python Function](https://access.redhat.com/documentation/
 
    `$ kn func build` 
 
+   To build a different image name or version from the one specified in func.yaml
+
+   `$ kn func build -i <image-name>:<image-version>` 
+
+   Note that this will modify the name of the image in func.yaml
+
    you can also push to an external registry like quay.io using podman or docker. All `podman` commands below work with `docker`
 
    `$ podman push <image-name-specified-in-func.yaml>`
@@ -97,9 +104,9 @@ End to End [Serverless Python Function](https://access.redhat.com/documentation/
 1. Test the function locally
 
    `$ kn func run`   
-    The container could also be run from directly from `podman`.
+    The container could also be run from directly from `podman` (especially if you want to run another version)
     ```
-    podman run --rm --name=sepsis-detection -p8080:8080 -d <image-name-specified-in-func.yaml>
+    podman run --rm --name=sepsis-detection -p8080:8080 -d <image-name>:<image-version>
     ```
     Test locally by sending data with a `curl`.
 

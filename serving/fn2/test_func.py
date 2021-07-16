@@ -162,9 +162,9 @@ class TestFunc(unittest.TestCase):
    "ICULOS":19,
 }
 
-    # print("******Checking missing biomarkers*****")
-    # self.check_data(data, 0)
-    # self.check_data(data2, 1)
+    print("******Checking missing biomarkers*****")
+    self.check_data(data, 0)
+    self.check_data(data2, 1)
 
   
 if __name__ == "__main__":
