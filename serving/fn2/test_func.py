@@ -4,12 +4,13 @@ func = __import__("func")
 
 class TestFunc(unittest.TestCase):
 
-  def test_data(self, biomarkers, expectedResult) :
+  def check_data(self, biomarkers, expectedResult) :
     #resp, code, headers = func.main(biomarkers)
     resp, code = func.main(biomarkers)
     self.assertEqual(resp["issepsis"], expectedResult)
     self.assertEqual(code, 200)
     #self.assertEqual(headers["content-type"], "application/json")
+    return biomarkers, expectedResult
 
   def test_func(self) :
 
@@ -103,35 +104,16 @@ class TestFunc(unittest.TestCase):
    "isSepsis":1
 }
   
-    #attempts to create cloud event request
-    # attributes = {
-    # "type": "com.example.sampletype1",
-    # "source": "https://example.com/event-producer",
-    # }
-    # event = CloudEvent(attributes, data)
-    # headers, body = to_structured(event)
-    # print(body)
-    # print(headers)
-  #   assert event is not None
-  #  # assert event.EventType() == data.ce_type
-  #   assert event.EventID() == data.ce_id
-  #   assert event.ContentType() == data.contentTyp
-    # print(event)
-
-    # m = marshaller.NewDefaultHTTPMarshaller()
-    # http_headers = {"content-type": "application/cloudevents+json"}
-    # #event = m.FromRequest(event_class(), headers, body)
-    # new_headers, _ = m.ToRequest(body, converters.TypeStructured, lambda x: x)
-    # print(new_headers)
-    
-    self.test_data(data, 0)
-    self.test_data(data2, 1)
+    #run tests
+    self.check_data(biomarkers = data, expectedResult = 0)
+    self.check_data(biomarkers = data2, expectedResult = 1)
 
     # test with missing fields
-    # no sepsis
+    # no sepsis ..for some reason if we remove Temp from list the expected result is wrong. TODO: investigate
     data = {
    "HR":103,
    "O2Sat":90,
+   "Temp":"NaN",
    "Resp":30,
    "BaseExcess":21,
    "HCO3":45,
@@ -151,6 +133,7 @@ class TestFunc(unittest.TestCase):
    "Bilirubin_total":0.3,
    "Hct":37.2,
    "Hgb":12.5,
+   "PTT":"NaN",
    "WBC":5.7,
    "Platelets":317,
    "Age":83.14,
@@ -179,8 +162,9 @@ class TestFunc(unittest.TestCase):
    "ICULOS":19,
 }
 
-    # self.test_data(data, 0)
-    # self.test_data(data2, 1)
+    # print("******Checking missing biomarkers*****")
+    # self.check_data(data, 0)
+    # self.check_data(data2, 1)
 
   
 if __name__ == "__main__":

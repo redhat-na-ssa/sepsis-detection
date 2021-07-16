@@ -30,30 +30,31 @@ def main(context: Context):
 
     # get json data from request or cloud event
     data = context 
-    # if context :
-  #     print(context)
+
+    # attempt to get data from HTTP Request or cloud event
+    if hasattr(context, "cloud_event") and hasattr(context.cloud_event, "data"):
+         data = context.cloud_event.data
     if hasattr(context, "request"):
          data = json.loads(context.request.get_data())
-    if hasattr(context, "cloud_event"):
-         if hasattr(context.cloud_event, "data"):
-            data = context.cloud_event.data
+
 
     logging.warning(f'**************  data from request: {data}')
 
-    # add missing biomarkers to the data
+    # add missing biomarkers to the data 
     global biomarkers
     if biomarkers == None:
         biomarkers = ["HR","O2Sat","Temp","SBP","MAP","DBP","Resp","EtCO2","BaseExcess","HCO3","FiO2","pH","PaCO2","SaO2","AST","BUN","Alkalinephos","Calcium","Chloride","Creatinine","Bilirubin_direct","Glucose","Lactate","Magnesium","Phosphate","Potassium","Bilirubin_total","TroponinI","Hct","Hgb","PTT","WBC","Fibrinogen","Platelets","Age","Gender","Unit1","Unit2","HospAdmTime","ICULOS","isSepsis"]
     # print(biomarkers)
 
     # logging.warning(f'**************  checking for missing biomarkers')
+    # OR should we add this to the data frame?
     # for marker in biomarkers:
     #     if marker not in data:
     #         data[marker] = "NaN"
 
     #convert to index before creating data frame
     jsondata = json.loads("[" + json.dumps(data) + "]") #convert to string first
-    # print(jsondata)
+    #logging.warning(f'**************  "[INFO] updated data with all biomarkers... {jsondata}') 
     raw = pd.DataFrame(jsondata)  
     logging.warning(f'**************  "[INFO] raw dataframe... {raw}') 
    # print(raw)
