@@ -40,7 +40,7 @@ def main(context: Context):
     pipeline, model = modelprocessor.load(pipelinePath = "pipeline.pkl", modelPath = "xgbc_model.pkl") 
 
     # get results
-    results = modelprocessor.transformAndPredict(raw, pipeline, model )
+    results = modelprocessor.transformAndPredict(raw, pipeline, model, dropNonBioMarkers = False )
     # there should only be one
     for index, row in results.iterrows():
         issepsis = row["issepsis"]

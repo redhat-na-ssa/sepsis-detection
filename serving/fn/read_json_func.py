@@ -14,7 +14,7 @@ import csv
 from model_process import ModelProcessor
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--input",  type=str, required=True, default="data/in/new_data.csv", help="where to grab data to predict against")
+ap.add_argument("-i", "--input",  type=str, required=True, default="data/in/new_data.json", help="where to grab data to predict against")
 ap.add_argument("-o", "--output", type=str, required=True, default="data/out/predictions.csv", help="where to save the predictions")
 ap.add_argument("-p", "--pipeline", type=str, default="data/transform/pipeline.pkl", help="which pipeline to pass the data through")
 ap.add_argument("-m", "--model", type=str, default="models/final/xgbc_model.pkl", help="which final model to inference/predict with")
