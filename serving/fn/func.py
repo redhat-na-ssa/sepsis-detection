@@ -22,8 +22,6 @@ def main(context: Context):
     modelprocessor = ModelProcessor()
 
     # get json data from request or cloud event
-    data = context 
-
     # attempt to get data from HTTP Request or cloud event
     if hasattr(context, "cloud_event") and hasattr(context.cloud_event, "data"):
          data = context.cloud_event.data
