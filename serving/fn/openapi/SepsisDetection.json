@@ -3,7 +3,7 @@
     "info": {
         "title": "Sepsis Detection",
         "version": "1.0.0",
-        "description": "Interface for sending patient data to analyze for sepsis risk assessment. The data points below are optional. Send \"NaN\" if data is null.\n\n[\"Age\", \"Unit1\", \"Unit2\", \"HospAdmTime\", \"ICULOS\", \"Gender\", \"Bilirubin_direct\", \"TroponinI\", \"isSepsis\"]"
+        "description": "Interface for sending patient data to analyze for sepsis risk assessment."
     },
     "paths": {
         "/": {
@@ -17,47 +17,38 @@
                             "examples": {
                                 "Sample point-in-time patient vitals": {
                                     "value": {
-                                        "HR": "103",
-                                        "O2Sat": "90",
-                                        "Temp": "NaN",
-                                        "SBP": "NaN",
-                                        "MAP": "NaN",
-                                        "DBP": "NaN",
-                                        "Resp": "30",
-                                        "EtCO2": "NaN",
-                                        "BaseExcess": "21",
-                                        "HCO3": "45",
-                                        "FiO2": "NaN",
-                                        "pH": "7.37",
-                                        "PaCO2": "90",
-                                        "SaO2": "91",
-                                        "AST": "16",
-                                        "BUN": "14",
-                                        "Alkalinephos": "98",
-                                        "Calcium": "9.3",
-                                        "Chloride": "85",
-                                        "Creatinine": "0.7",
-                                        "Bilirubin_direct": "NaN",
-                                        "Glucose": "193",
-                                        "Lactate": "NaN",
-                                        "Magnesium": "2",
-                                        "Phosphate": "3.3",
-                                        "Potassium": "3.8",
-                                        "Bilirubin_total": "0.3",
-                                        "TroponinI": "NaN",
-                                        "Hct": "37.2",
-                                        "Hgb": "12.5",
-                                        "PTT": "NaN",
-                                        "WBC": "5.7",
-                                        "Fibrinogen": "NaN",
-                                        "Platelets": "317",
-                                        "Age": "83.14",
-                                        "Gender": "0",
-                                        "Unit1": "NaN",
-                                        "Unit2": "NaN",
-                                        "HospAdmTime": "-0.03",
-                                        "ICULOS": "17",
-                                        "isSepsis": "0"
+                                        "HR": 103.5,
+                                        "O2Sat": 90.5,
+                                        "Temp": 98.6,
+                                        "SBP": 10.5,
+                                        "MAP": 10.5,
+                                        "DBP": 10.5,
+                                        "Resp": 30.5,
+                                        "EtCO2": 10.5,
+                                        "BaseExcess": 21.5,
+                                        "HCO3": 45.5,
+                                        "FiO2": 10.5,
+                                        "pH": 7.37,
+                                        "PaCO2": 90.5,
+                                        "SaO2": 91.5,
+                                        "AST": 16.5,
+                                        "BUN": 14.5,
+                                        "Alkalinephos": 98.5,
+                                        "Calcium": 9.3,
+                                        "Chloride": 85.5,
+                                        "Creatinine": 0.7,
+                                        "Glucose": 193.5,
+                                        "Lactate": 10.5,
+                                        "Magnesium": 2.5,
+                                        "Phosphate": 3.3,
+                                        "Potassium": 3.8,
+                                        "Bilirubin_total": 0.3,
+                                        "Hct": 37.2,
+                                        "Hgb": 12.5,
+                                        "PTT": 10.5,
+                                        "WBC": 5.7,
+                                        "Fibrinogen": 10.5,
+                                        "Platelets": 317.5
                                     }
                                 }
                             }
@@ -106,175 +97,171 @@
             },
             "PatientVitals": {
                 "title": "Root Type for PatientVitals",
-                "description": "Vitals information taken from a patient at a particular point in time.",
+                "description": "Contains a set of data collected from a patient by their caregiver.",
                 "type": "object",
                 "properties": {
                     "HR": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "O2Sat": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Temp": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "SBP": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "MAP": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "DBP": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Resp": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "EtCO2": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "BaseExcess": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "HCO3": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "FiO2": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "pH": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "PaCO2": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "SaO2": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "AST": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "BUN": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Alkalinephos": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Calcium": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Chloride": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Creatinine": {
-                        "type": "string"
-                    },
-                    "Bilirubin_direct": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Glucose": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Lactate": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Magnesium": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Phosphate": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Potassium": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Bilirubin_total": {
-                        "type": "string"
-                    },
-                    "TroponinI": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Hct": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Hgb": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "PTT": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "WBC": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Fibrinogen": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     },
                     "Platelets": {
-                        "type": "string"
-                    },
-                    "Age": {
-                        "type": "string"
-                    },
-                    "Gender": {
-                        "type": "string"
-                    },
-                    "Unit1": {
-                        "type": "string"
-                    },
-                    "Unit2": {
-                        "type": "string"
-                    },
-                    "HospAdmTime": {
-                        "type": "string"
-                    },
-                    "ICULOS": {
-                        "type": "string"
-                    },
-                    "isSepsis": {
-                        "type": "string"
+                        "format": "double",
+                        "type": "number"
                     }
                 },
                 "example": {
-                    "HR": "103",
-                    "O2Sat": "90",
-                    "Temp": "NaN",
-                    "SBP": "NaN",
-                    "MAP": "NaN",
-                    "DBP": "NaN",
-                    "Resp": "30",
-                    "EtCO2": "NaN",
-                    "BaseExcess": "21",
-                    "HCO3": "45",
-                    "FiO2": "NaN",
-                    "pH": "7.37",
-                    "PaCO2": "90",
-                    "SaO2": "91",
-                    "AST": "16",
-                    "BUN": "14",
-                    "Alkalinephos": "98",
-                    "Calcium": "9.3",
-                    "Chloride": "85",
-                    "Creatinine": "0.7",
-                    "Bilirubin_direct": "NaN",
-                    "Glucose": "193",
-                    "Lactate": "NaN",
-                    "Magnesium": "2",
-                    "Phosphate": "3.3",
-                    "Potassium": "3.8",
-                    "Bilirubin_total": "0.3",
-                    "TroponinI": "NaN",
-                    "Hct": "37.2",
-                    "Hgb": "12.5",
-                    "PTT": "NaN",
-                    "WBC": "5.7",
-                    "Fibrinogen": "NaN",
-                    "Platelets": "317",
-                    "Age": "83.14",
-                    "Gender": "0",
-                    "Unit1": "NaN",
-                    "Unit2": "NaN",
-                    "HospAdmTime": "-0.03",
-                    "ICULOS": "17",
-                    "isSepsis": "0"
+                    "HR": 103.5,
+                    "O2Sat": 90.5,
+                    "Temp": 98.6,
+                    "SBP": 10.5,
+                    "MAP": 10.5,
+                    "DBP": 10.5,
+                    "Resp": 30.5,
+                    "EtCO2": 10.5,
+                    "BaseExcess": 21.5,
+                    "HCO3": 45.5,
+                    "FiO2": 10.5,
+                    "pH": 7.37,
+                    "PaCO2": 90.5,
+                    "SaO2": 91.5,
+                    "AST": 16.5,
+                    "BUN": 14.5,
+                    "Alkalinephos": 98.5,
+                    "Calcium": 9.3,
+                    "Chloride": 85.5,
+                    "Creatinine": 0.7,
+                    "Glucose": 193.5,
+                    "Lactate": 10.5,
+                    "Magnesium": 2.5,
+                    "Phosphate": 3.3,
+                    "Potassium": 3.8,
+                    "Bilirubin_total": 0.3,
+                    "Hct": 37.2,
+                    "Hgb": 12.5,
+                    "PTT": 10.5,
+                    "WBC": 5.7,
+                    "Fibrinogen": 10.5,
+                    "Platelets": 317.5
                 }
             }
         }

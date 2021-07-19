@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 /**
  * Root Type for PatientVitals
  * <p>
- * Vitals information taken from a patient at a particular point in time.
+ * Contains a set of data collected from a patient by their caregiver.
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -34,521 +34,404 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "Calcium",
     "Chloride",
     "Creatinine",
-    "Bilirubin_direct",
     "Glucose",
     "Lactate",
     "Magnesium",
     "Phosphate",
     "Potassium",
     "Bilirubin_total",
-    "TroponinI",
     "Hct",
     "Hgb",
     "PTT",
     "WBC",
     "Fibrinogen",
-    "Platelets",
-    "Age",
-    "Gender",
-    "Unit1",
-    "Unit2",
-    "HospAdmTime",
-    "ICULOS",
-    "isSepsis"
+    "Platelets"
 })
 public class PatientVitals {
 
     @JsonProperty("HR")
-    private String hr;
+    private Double hr;
     @JsonProperty("O2Sat")
-    private String o2Sat;
+    private Double o2Sat;
     @JsonProperty("Temp")
-    private String temp;
+    private Double temp;
     @JsonProperty("SBP")
-    private String sbp;
+    private Double sbp;
     @JsonProperty("MAP")
-    private String map;
+    private Double map;
     @JsonProperty("DBP")
-    private String dbp;
+    private Double dbp;
     @JsonProperty("Resp")
-    private String resp;
+    private Double resp;
     @JsonProperty("EtCO2")
-    private String etCO2;
+    private Double etCO2;
     @JsonProperty("BaseExcess")
-    private String baseExcess;
+    private Double baseExcess;
     @JsonProperty("HCO3")
-    private String hco3;
+    private Double hco3;
     @JsonProperty("FiO2")
-    private String fiO2;
+    private Double fiO2;
     @JsonProperty("pH")
-    private String pH;
+    private Double pH;
     @JsonProperty("PaCO2")
-    private String paCO2;
+    private Double paCO2;
     @JsonProperty("SaO2")
-    private String saO2;
+    private Double saO2;
     @JsonProperty("AST")
-    private String ast;
+    private Double ast;
     @JsonProperty("BUN")
-    private String bun;
+    private Double bun;
     @JsonProperty("Alkalinephos")
-    private String alkalinephos;
+    private Double alkalinephos;
     @JsonProperty("Calcium")
-    private String calcium;
+    private Double calcium;
     @JsonProperty("Chloride")
-    private String chloride;
+    private Double chloride;
     @JsonProperty("Creatinine")
-    private String creatinine;
-    @JsonProperty("Bilirubin_direct")
-    private String bilirubinDirect;
+    private Double creatinine;
     @JsonProperty("Glucose")
-    private String glucose;
+    private Double glucose;
     @JsonProperty("Lactate")
-    private String lactate;
+    private Double lactate;
     @JsonProperty("Magnesium")
-    private String magnesium;
+    private Double magnesium;
     @JsonProperty("Phosphate")
-    private String phosphate;
+    private Double phosphate;
     @JsonProperty("Potassium")
-    private String potassium;
+    private Double potassium;
     @JsonProperty("Bilirubin_total")
-    private String bilirubinTotal;
-    @JsonProperty("TroponinI")
-    private String troponinI;
+    private Double bilirubinTotal;
     @JsonProperty("Hct")
-    private String hct;
+    private Double hct;
     @JsonProperty("Hgb")
-    private String hgb;
+    private Double hgb;
     @JsonProperty("PTT")
-    private String ptt;
+    private Double ptt;
     @JsonProperty("WBC")
-    private String wbc;
+    private Double wbc;
     @JsonProperty("Fibrinogen")
-    private String fibrinogen;
+    private Double fibrinogen;
     @JsonProperty("Platelets")
-    private String platelets;
-    @JsonProperty("Age")
-    private String age;
-    @JsonProperty("Gender")
-    private String gender;
-    @JsonProperty("Unit1")
-    private String unit1;
-    @JsonProperty("Unit2")
-    private String unit2;
-    @JsonProperty("HospAdmTime")
-    private String hospAdmTime;
-    @JsonProperty("ICULOS")
-    private String iculos;
-    @JsonProperty("isSepsis")
-    private String isSepsis;
+    private Double platelets;
 
     @JsonProperty("HR")
-    public String getHr() {
+    public Double getHr() {
         return hr;
     }
 
     @JsonProperty("HR")
-    public void setHr(String hr) {
+    public void setHr(Double hr) {
         this.hr = hr;
     }
 
     @JsonProperty("O2Sat")
-    public String getO2Sat() {
+    public Double getO2Sat() {
         return o2Sat;
     }
 
     @JsonProperty("O2Sat")
-    public void setO2Sat(String o2Sat) {
+    public void setO2Sat(Double o2Sat) {
         this.o2Sat = o2Sat;
     }
 
     @JsonProperty("Temp")
-    public String getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
     @JsonProperty("Temp")
-    public void setTemp(String temp) {
+    public void setTemp(Double temp) {
         this.temp = temp;
     }
 
     @JsonProperty("SBP")
-    public String getSbp() {
+    public Double getSbp() {
         return sbp;
     }
 
     @JsonProperty("SBP")
-    public void setSbp(String sbp) {
+    public void setSbp(Double sbp) {
         this.sbp = sbp;
     }
 
     @JsonProperty("MAP")
-    public String getMap() {
+    public Double getMap() {
         return map;
     }
 
     @JsonProperty("MAP")
-    public void setMap(String map) {
+    public void setMap(Double map) {
         this.map = map;
     }
 
     @JsonProperty("DBP")
-    public String getDbp() {
+    public Double getDbp() {
         return dbp;
     }
 
     @JsonProperty("DBP")
-    public void setDbp(String dbp) {
+    public void setDbp(Double dbp) {
         this.dbp = dbp;
     }
 
     @JsonProperty("Resp")
-    public String getResp() {
+    public Double getResp() {
         return resp;
     }
 
     @JsonProperty("Resp")
-    public void setResp(String resp) {
+    public void setResp(Double resp) {
         this.resp = resp;
     }
 
     @JsonProperty("EtCO2")
-    public String getEtCO2() {
+    public Double getEtCO2() {
         return etCO2;
     }
 
     @JsonProperty("EtCO2")
-    public void setEtCO2(String etCO2) {
+    public void setEtCO2(Double etCO2) {
         this.etCO2 = etCO2;
     }
 
     @JsonProperty("BaseExcess")
-    public String getBaseExcess() {
+    public Double getBaseExcess() {
         return baseExcess;
     }
 
     @JsonProperty("BaseExcess")
-    public void setBaseExcess(String baseExcess) {
+    public void setBaseExcess(Double baseExcess) {
         this.baseExcess = baseExcess;
     }
 
     @JsonProperty("HCO3")
-    public String getHco3() {
+    public Double getHco3() {
         return hco3;
     }
 
     @JsonProperty("HCO3")
-    public void setHco3(String hco3) {
+    public void setHco3(Double hco3) {
         this.hco3 = hco3;
     }
 
     @JsonProperty("FiO2")
-    public String getFiO2() {
+    public Double getFiO2() {
         return fiO2;
     }
 
     @JsonProperty("FiO2")
-    public void setFiO2(String fiO2) {
+    public void setFiO2(Double fiO2) {
         this.fiO2 = fiO2;
     }
 
     @JsonProperty("pH")
-    public String getpH() {
+    public Double getpH() {
         return pH;
     }
 
     @JsonProperty("pH")
-    public void setpH(String pH) {
+    public void setpH(Double pH) {
         this.pH = pH;
     }
 
     @JsonProperty("PaCO2")
-    public String getPaCO2() {
+    public Double getPaCO2() {
         return paCO2;
     }
 
     @JsonProperty("PaCO2")
-    public void setPaCO2(String paCO2) {
+    public void setPaCO2(Double paCO2) {
         this.paCO2 = paCO2;
     }
 
     @JsonProperty("SaO2")
-    public String getSaO2() {
+    public Double getSaO2() {
         return saO2;
     }
 
     @JsonProperty("SaO2")
-    public void setSaO2(String saO2) {
+    public void setSaO2(Double saO2) {
         this.saO2 = saO2;
     }
 
     @JsonProperty("AST")
-    public String getAst() {
+    public Double getAst() {
         return ast;
     }
 
     @JsonProperty("AST")
-    public void setAst(String ast) {
+    public void setAst(Double ast) {
         this.ast = ast;
     }
 
     @JsonProperty("BUN")
-    public String getBun() {
+    public Double getBun() {
         return bun;
     }
 
     @JsonProperty("BUN")
-    public void setBun(String bun) {
+    public void setBun(Double bun) {
         this.bun = bun;
     }
 
     @JsonProperty("Alkalinephos")
-    public String getAlkalinephos() {
+    public Double getAlkalinephos() {
         return alkalinephos;
     }
 
     @JsonProperty("Alkalinephos")
-    public void setAlkalinephos(String alkalinephos) {
+    public void setAlkalinephos(Double alkalinephos) {
         this.alkalinephos = alkalinephos;
     }
 
     @JsonProperty("Calcium")
-    public String getCalcium() {
+    public Double getCalcium() {
         return calcium;
     }
 
     @JsonProperty("Calcium")
-    public void setCalcium(String calcium) {
+    public void setCalcium(Double calcium) {
         this.calcium = calcium;
     }
 
     @JsonProperty("Chloride")
-    public String getChloride() {
+    public Double getChloride() {
         return chloride;
     }
 
     @JsonProperty("Chloride")
-    public void setChloride(String chloride) {
+    public void setChloride(Double chloride) {
         this.chloride = chloride;
     }
 
     @JsonProperty("Creatinine")
-    public String getCreatinine() {
+    public Double getCreatinine() {
         return creatinine;
     }
 
     @JsonProperty("Creatinine")
-    public void setCreatinine(String creatinine) {
+    public void setCreatinine(Double creatinine) {
         this.creatinine = creatinine;
     }
 
-    @JsonProperty("Bilirubin_direct")
-    public String getBilirubinDirect() {
-        return bilirubinDirect;
-    }
-
-    @JsonProperty("Bilirubin_direct")
-    public void setBilirubinDirect(String bilirubinDirect) {
-        this.bilirubinDirect = bilirubinDirect;
-    }
-
     @JsonProperty("Glucose")
-    public String getGlucose() {
+    public Double getGlucose() {
         return glucose;
     }
 
     @JsonProperty("Glucose")
-    public void setGlucose(String glucose) {
+    public void setGlucose(Double glucose) {
         this.glucose = glucose;
     }
 
     @JsonProperty("Lactate")
-    public String getLactate() {
+    public Double getLactate() {
         return lactate;
     }
 
     @JsonProperty("Lactate")
-    public void setLactate(String lactate) {
+    public void setLactate(Double lactate) {
         this.lactate = lactate;
     }
 
     @JsonProperty("Magnesium")
-    public String getMagnesium() {
+    public Double getMagnesium() {
         return magnesium;
     }
 
     @JsonProperty("Magnesium")
-    public void setMagnesium(String magnesium) {
+    public void setMagnesium(Double magnesium) {
         this.magnesium = magnesium;
     }
 
     @JsonProperty("Phosphate")
-    public String getPhosphate() {
+    public Double getPhosphate() {
         return phosphate;
     }
 
     @JsonProperty("Phosphate")
-    public void setPhosphate(String phosphate) {
+    public void setPhosphate(Double phosphate) {
         this.phosphate = phosphate;
     }
 
     @JsonProperty("Potassium")
-    public String getPotassium() {
+    public Double getPotassium() {
         return potassium;
     }
 
     @JsonProperty("Potassium")
-    public void setPotassium(String potassium) {
+    public void setPotassium(Double potassium) {
         this.potassium = potassium;
     }
 
     @JsonProperty("Bilirubin_total")
-    public String getBilirubinTotal() {
+    public Double getBilirubinTotal() {
         return bilirubinTotal;
     }
 
     @JsonProperty("Bilirubin_total")
-    public void setBilirubinTotal(String bilirubinTotal) {
+    public void setBilirubinTotal(Double bilirubinTotal) {
         this.bilirubinTotal = bilirubinTotal;
     }
 
-    @JsonProperty("TroponinI")
-    public String getTroponinI() {
-        return troponinI;
-    }
-
-    @JsonProperty("TroponinI")
-    public void setTroponinI(String troponinI) {
-        this.troponinI = troponinI;
-    }
-
     @JsonProperty("Hct")
-    public String getHct() {
+    public Double getHct() {
         return hct;
     }
 
     @JsonProperty("Hct")
-    public void setHct(String hct) {
+    public void setHct(Double hct) {
         this.hct = hct;
     }
 
     @JsonProperty("Hgb")
-    public String getHgb() {
+    public Double getHgb() {
         return hgb;
     }
 
     @JsonProperty("Hgb")
-    public void setHgb(String hgb) {
+    public void setHgb(Double hgb) {
         this.hgb = hgb;
     }
 
     @JsonProperty("PTT")
-    public String getPtt() {
+    public Double getPtt() {
         return ptt;
     }
 
     @JsonProperty("PTT")
-    public void setPtt(String ptt) {
+    public void setPtt(Double ptt) {
         this.ptt = ptt;
     }
 
     @JsonProperty("WBC")
-    public String getWbc() {
+    public Double getWbc() {
         return wbc;
     }
 
     @JsonProperty("WBC")
-    public void setWbc(String wbc) {
+    public void setWbc(Double wbc) {
         this.wbc = wbc;
     }
 
     @JsonProperty("Fibrinogen")
-    public String getFibrinogen() {
+    public Double getFibrinogen() {
         return fibrinogen;
     }
 
     @JsonProperty("Fibrinogen")
-    public void setFibrinogen(String fibrinogen) {
+    public void setFibrinogen(Double fibrinogen) {
         this.fibrinogen = fibrinogen;
     }
 
     @JsonProperty("Platelets")
-    public String getPlatelets() {
+    public Double getPlatelets() {
         return platelets;
     }
 
     @JsonProperty("Platelets")
-    public void setPlatelets(String platelets) {
+    public void setPlatelets(Double platelets) {
         this.platelets = platelets;
-    }
-
-    @JsonProperty("Age")
-    public String getAge() {
-        return age;
-    }
-
-    @JsonProperty("Age")
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    @JsonProperty("Gender")
-    public String getGender() {
-        return gender;
-    }
-
-    @JsonProperty("Gender")
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    @JsonProperty("Unit1")
-    public String getUnit1() {
-        return unit1;
-    }
-
-    @JsonProperty("Unit1")
-    public void setUnit1(String unit1) {
-        this.unit1 = unit1;
-    }
-
-    @JsonProperty("Unit2")
-    public String getUnit2() {
-        return unit2;
-    }
-
-    @JsonProperty("Unit2")
-    public void setUnit2(String unit2) {
-        this.unit2 = unit2;
-    }
-
-    @JsonProperty("HospAdmTime")
-    public String getHospAdmTime() {
-        return hospAdmTime;
-    }
-
-    @JsonProperty("HospAdmTime")
-    public void setHospAdmTime(String hospAdmTime) {
-        this.hospAdmTime = hospAdmTime;
-    }
-
-    @JsonProperty("ICULOS")
-    public String getIculos() {
-        return iculos;
-    }
-
-    @JsonProperty("ICULOS")
-    public void setIculos(String iculos) {
-        this.iculos = iculos;
-    }
-
-    @JsonProperty("isSepsis")
-    public String getIsSepsis() {
-        return isSepsis;
-    }
-
-    @JsonProperty("isSepsis")
-    public void setIsSepsis(String isSepsis) {
-        this.isSepsis = isSepsis;
     }
 
 }
