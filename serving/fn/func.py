@@ -27,8 +27,10 @@ def main(context: Context):
     # attempt to get data from HTTP Request or cloud event
     if hasattr(context, "cloud_event") and hasattr(context.cloud_event, "data"):
          data = context.cloud_event.data
-    if hasattr(context, "request"):
+    elif hasattr(context, "request"):
          data = json.loads(context.request.get_data())
+    else : 
+         data = context #assume this is from test...
     logging.warning(f'**************  data from request: {data}')
 
     #convert to index then creating data frame
