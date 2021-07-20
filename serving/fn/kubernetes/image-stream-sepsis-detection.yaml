@@ -1,0 +1,13 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: sepsis-detection
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: 'quay.io/redhat_naps_da/sepsis-detection:latest'
+      importPolicy: {}
+      referencePolicy:
+        type: Source

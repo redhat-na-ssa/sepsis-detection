@@ -1,0 +1,44 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"sepsis-detection:latest","namespace":"sepsis-detection"},"fieldPath":"spec.template.spec.containers[?(@.name==\"sepsis-detection\")].image","pause":"false"}]
+  name: sepsis-detection
+  labels:
+    app.kubernetes.io/component: sepsis-detection
+    app.kubernetes.io/instance: sepsis-detection
+    app.kubernetes.io/name: sepsis-detection
+    app.kubernetes.io/part-of: sepsis-detection-app
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: latest
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+        autoscaling.knative.dev/maxScale: '10'
+      labels:
+        app.kubernetes.io/component: sepsis-detection
+        app.kubernetes.io/instance: sepsis-detection
+        app.kubernetes.io/name: sepsis-detection
+        app.kubernetes.io/part-of: sepsis-detection-app
+        app.openshift.io/runtime: python
+        app.openshift.io/runtime-version: latest
+    spec:
+      containers:
+        - image: 'quay.io/redhat_naps_da/sepsis-detection:latest'
+          imagePullPolicy: Always
+          name: sepsis-detection
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+      enableServiceLinks: false
+      timeoutSeconds: 300
+  traffic:
+    - latestRevision: true
+      percent: 100

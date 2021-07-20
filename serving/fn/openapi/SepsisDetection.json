@@ -1,0 +1,269 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Sepsis Detection",
+        "version": "1.0.0",
+        "description": "Interface for sending patient data to analyze for sepsis risk assessment."
+    },
+    "paths": {
+        "/": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PatientVitals"
+                            },
+                            "examples": {
+                                "Sample point-in-time patient vitals": {
+                                    "value": {
+                                        "HR": 103.5,
+                                        "O2Sat": 90.5,
+                                        "Temp": 98.6,
+                                        "SBP": 10.5,
+                                        "MAP": 10.5,
+                                        "DBP": 10.5,
+                                        "Resp": 30.5,
+                                        "EtCO2": 10.5,
+                                        "BaseExcess": 21.5,
+                                        "HCO3": 45.5,
+                                        "FiO2": 10.5,
+                                        "pH": 7.37,
+                                        "PaCO2": 90.5,
+                                        "SaO2": 91.5,
+                                        "AST": 16.5,
+                                        "BUN": 14.5,
+                                        "Alkalinephos": 98.5,
+                                        "Calcium": 9.3,
+                                        "Chloride": 85.5,
+                                        "Creatinine": 0.7,
+                                        "Glucose": 193.5,
+                                        "Lactate": 10.5,
+                                        "Magnesium": 2.5,
+                                        "Phosphate": 3.3,
+                                        "Potassium": 3.8,
+                                        "Bilirubin_total": 0.3,
+                                        "Hct": 37.2,
+                                        "Hgb": 12.5,
+                                        "PTT": 10.5,
+                                        "WBC": 5.7,
+                                        "Fibrinogen": 10.5,
+                                        "Platelets": 317.5
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SepsisResponse"
+                                },
+                                "examples": {
+                                    "Positive for Sepsis": {
+                                        "value": {
+                                            "issepsis": 1
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Data showing whether or not input data was deemed to be sepsis positive by the detection model."
+                    }
+                },
+                "summary": "Analyze a point-in-time dataset for a petient to detect sepsis risk"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SepsisResponse": {
+                "title": "Root Type for SepsisResponse",
+                "description": "Results from analyzing patient vitals information",
+                "type": "object",
+                "properties": {
+                    "issepsis": {
+                        "format": "int32",
+                        "type": "integer"
+                    }
+                },
+                "example": {
+                    "issepsis": 1
+                }
+            },
+            "PatientVitals": {
+                "title": "Root Type for PatientVitals",
+                "description": "Contains a set of data collected from a patient by their caregiver.",
+                "type": "object",
+                "properties": {
+                    "HR": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "O2Sat": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Temp": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "SBP": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "MAP": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "DBP": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Resp": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "EtCO2": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "BaseExcess": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "HCO3": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "FiO2": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "pH": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "PaCO2": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "SaO2": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "AST": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "BUN": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Alkalinephos": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Calcium": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Chloride": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Creatinine": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Glucose": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Lactate": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Magnesium": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Phosphate": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Potassium": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Bilirubin_total": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Hct": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Hgb": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "PTT": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "WBC": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Fibrinogen": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Platelets": {
+                        "format": "double",
+                        "type": "number"
+                    }
+                },
+                "example": {
+                    "HR": 103.5,
+                    "O2Sat": 90.5,
+                    "Temp": 98.6,
+                    "SBP": 10.5,
+                    "MAP": 10.5,
+                    "DBP": 10.5,
+                    "Resp": 30.5,
+                    "EtCO2": 10.5,
+                    "BaseExcess": 21.5,
+                    "HCO3": 45.5,
+                    "FiO2": 10.5,
+                    "pH": 7.37,
+                    "PaCO2": 90.5,
+                    "SaO2": 91.5,
+                    "AST": 16.5,
+                    "BUN": 14.5,
+                    "Alkalinephos": 98.5,
+                    "Calcium": 9.3,
+                    "Chloride": 85.5,
+                    "Creatinine": 0.7,
+                    "Glucose": 193.5,
+                    "Lactate": 10.5,
+                    "Magnesium": 2.5,
+                    "Phosphate": 3.3,
+                    "Potassium": 3.8,
+                    "Bilirubin_total": 0.3,
+                    "Hct": 37.2,
+                    "Hgb": 12.5,
+                    "PTT": 10.5,
+                    "WBC": 5.7,
+                    "Fibrinogen": 10.5,
+                    "Platelets": 317.5
+                }
+            }
+        }
+    }
+}
